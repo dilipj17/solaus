@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ant_icons/ant_icons.dart';
-import 'package:solaus/screens/homepage.dart';
+import 'package:solaus/presentation/screens/homepage.dart';
 
 class AuthModuleClass extends StatefulWidget {
   @override
