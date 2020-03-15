@@ -4,10 +4,10 @@ import 'package:meta/meta.dart';
 class Books extends Equatable {
   final String id;
   final String name;
-  final Uri image;
+  final String image;
   final String author;
   final String discription;
-  final Uri link;
+  final String link;
 
   Books({
     @required this.id,

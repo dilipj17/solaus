@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 class UserProfile extends Equatable {
   final String id;
   final String name;
-  final Uri image;
+  final String image;
   final String email;
 
   UserProfile({

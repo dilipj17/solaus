@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-class UserProfile extends Equatable {
+class Result extends Equatable {
   final String id;
   final String user;
   final String equation;
   final String steps;
 
-  UserProfile({
+  Result({
     @required this.id,
     @required this.user,
     @required this.equation,
