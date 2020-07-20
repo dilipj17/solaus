@@ -19,12 +19,23 @@ void main() {
     },
   );
 
-  // group('should return a valid model when the JSON is return', () {
-  //   test('fromJson', () {
-  //     final Map<String, dynamic> jsonMap =
-  //         json.decode(fixture('history_data.json'));
-  //     final result = tHistoryModel.fromJson(jsonMap);
-  //     expect(result, tHistoryModel);
-  //   });
-  // });
+  group('fromJson', () {
+    test('should return a valid model when the JSON is return', () {
+      final Map<String, dynamic> jsonMap =
+          json.decode(fixture('history_data.json'));
+      final result = HistoryModel.fromJson(jsonMap);
+      expect(result, tHistoryModel);
+    });
+  });
+
+  group('toJson', () {
+    test('should return a JSON Map containing the proper data', () {
+      final result = tHistoryModel.toJson();
+      final expectedMap = {
+        "id": "id",
+        "equation": "equation",
+      };
+      expect(result, expectedMap);
+    });
+  });
 }
