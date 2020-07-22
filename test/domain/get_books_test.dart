@@ -26,7 +26,7 @@ void main() {
   );
 
   test(
-    'should get book for the id from the repository',
+    'should get list of book from the repository',
     () async {
       // arrange
       when(mockBooksRepository.getBooks())

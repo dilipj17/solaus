@@ -22,7 +22,7 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
 
   @override
   Future<BookModel> getBooks() =>
-      _getBooksFromUrl("http://numbersapi.com/random");
+      _getBooksFromUrl("http://demo3459690.mockable.io/kuchh");
 
   Future<BookModel> _getBooksFromUrl(String url) async {
     final response = await client.get(
@@ -33,6 +33,7 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
+      print(response.body);
       return BookModel.fromJson(json.decode(response.body));
     } else {
       throw ServerException();
