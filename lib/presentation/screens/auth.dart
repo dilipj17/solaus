@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ant_icons/ant_icons.dart';
+import 'package:solaus/presentation/screens/history.dart';
 import 'package:solaus/presentation/screens/homepage.dart';
+import 'package:solaus/presentation/screens/results.dart';
+import 'package:solaus/presentation/screens/user_profile.dart';
 
 class AuthModuleClass extends StatefulWidget {
   @override
@@ -57,6 +60,18 @@ class _AuthModuleClassState extends State<AuthModuleClass> {
                           ]))),
             ),
           ),
+          RaisedButton(
+            onPressed: () => Navigator.push(
+                context, MaterialPageRoute(builder: (_) => HistoryPage())),
+          ),
+          // RaisedButton(
+          //   onPressed: () => Navigator.push(
+          //       context, MaterialPageRoute(builder: (_) => UserProfilePage())),
+          // ),
+          // RaisedButton(
+          //   onPressed: () => Navigator.push(
+          //       context, MaterialPageRoute(builder: (_) => ResultPage())),
+          // ),
         ],
       ),
     );

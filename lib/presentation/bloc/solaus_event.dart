@@ -8,3 +8,30 @@ abstract class SolausEvent extends Equatable {
 }
 
 class GetBooksForApp extends SolausEvent {}
+
+class GetHistoryForApp extends SolausEvent {
+  final String idstring;
+
+  GetHistoryForApp({@required this.idstring});
+
+  @override
+  List<Object> get props => [idstring];
+}
+
+class GetUserProfileForApp extends SolausEvent {
+  final String idstring;
+
+  GetUserProfileForApp({@required this.idstring});
+
+  @override
+  List<Object> get props => [idstring];
+}
+
+class GetResultsForApp extends SolausEvent {
+  final String idstring;
+
+  GetResultsForApp({@required this.idstring});
+
+  @override
+  List<Object> get props => [idstring];
+}

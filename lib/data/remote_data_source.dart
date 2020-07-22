@@ -33,7 +33,6 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-      print(response.body);
       return BookModel.fromJson(json.decode(response.body));
     } else {
       throw ServerException();
@@ -41,7 +40,8 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
   }
 
   @override
-  Future<HistoryModel> getHistory(String id) => _getHistoryFromUrl("#");
+  Future<HistoryModel> getHistory(String id) =>
+      _getHistoryFromUrl("http://demo3459690.mockable.io/history");
 
   Future<HistoryModel> _getHistoryFromUrl(String url) async {
     final response = await client.get(
@@ -59,7 +59,8 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
   }
 
   @override
-  Future<ResultModel> getResult(String id) => _getResultFromUrl("#");
+  Future<ResultModel> getResult(String id) =>
+      _getResultFromUrl("http://demo3459690.mockable.io/result");
 
   Future<ResultModel> _getResultFromUrl(String url) async {
     final response = await client.get(
@@ -78,7 +79,7 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
 
   @override
   Future<UserProfileModel> getUserProfile(String id) =>
-      _getUserProfileFromUrl("#");
+      _getUserProfileFromUrl("http://demo3459690.mockable.io/userprofile");
 
   Future<UserProfileModel> _getUserProfileFromUrl(String url) async {
     final response = await client.get(

@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:solaus/domain/entities/user_profile.dart';
 import 'package:solaus/domain/repositories/user_profile_repository.dart';
+import 'package:solaus/domain/usecases/get_history.dart';
 import 'package:solaus/domain/usecases/get_user_profile.dart';
 
 class MockUserProfileRepository extends Mock implements UserProfileRepository {}

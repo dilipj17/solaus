@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:solaus/domain/entities/result.dart';
 import 'package:solaus/domain/repositories/result_repository.dart';
+import 'package:solaus/domain/usecases/get_history.dart';
 import 'package:solaus/domain/usecases/get_result.dart';
 
 class MockResultRepository extends Mock implements ResultRepository {}

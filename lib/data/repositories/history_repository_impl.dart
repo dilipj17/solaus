@@ -7,11 +7,11 @@ import 'package:solaus/data/remote_data_source.dart';
 import 'package:solaus/domain/entities/history.dart';
 import 'package:solaus/domain/repositories/history_repositiry.dart';
 
-class HistoryRpositoryImpl implements HistoryRepository {
+class HistoryRepositoryImpl implements HistoryRepository {
   final SolausRemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
 
-  HistoryRpositoryImpl({
+  HistoryRepositoryImpl({
     @required this.remoteDataSource,
     @required this.networkInfo,
   });

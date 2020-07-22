@@ -7,11 +7,11 @@ import 'package:solaus/data/remote_data_source.dart';
 import 'package:solaus/domain/entities/result.dart';
 import 'package:solaus/domain/repositories/result_repository.dart';
 
-class ResultRpositoryImpl implements ResultRepository {
+class ResultRepositoryImpl implements ResultRepository {
   final SolausRemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
 
-  ResultRpositoryImpl({
+  ResultRepositoryImpl({
     @required this.remoteDataSource,
     @required this.networkInfo,
   });
