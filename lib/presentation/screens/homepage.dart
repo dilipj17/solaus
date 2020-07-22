@@ -27,19 +27,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BlocProvider<BooksBloc> buildBody(BuildContext context) {
+  BlocProvider<SolausBloc> buildBody(BuildContext context) {
     return BlocProvider(
-      create: (_) => sl<BooksBloc>(),
-      child: BlocBuilder<BooksBloc, BooksState>(
+      create: (_) => sl<SolausBloc>(),
+      child: BlocBuilder<SolausBloc, SolausState>(
         builder: (context, state) {
           if (state is Empty) {
-            BlocProvider.of<BooksBloc>(context).add(GetBooksForApp());
+            BlocProvider.of<SolausBloc>(context).add(GetBooksForApp());
             return MessageDisplay(
               message: 'Start searching!',
             );
           } else if (state is Loading) {
             return LoadingWidget();
-          } else if (state is Loaded) {
+          } else if (state is BooksLoaded) {
             return BooksDisplay(books: state.books);
           } else if (state is Error) {
             return MessageDisplay(

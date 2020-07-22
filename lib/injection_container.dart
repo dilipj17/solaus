@@ -14,7 +14,7 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   sl.registerFactory(
-    () => BooksBloc(books: sl()),
+    () => SolausBloc(books: sl()),
   );
 
   sl.registerLazySingleton(() => GetBooks(sl()));
