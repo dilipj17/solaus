@@ -22,13 +22,13 @@ void main() {
     'should get history for the given id from the book repository',
     () async {
       //arrange
-      when(mockHistoryRepository.getHistory(any))
+      when(mockHistoryRepository.getHistory())
           .thenAnswer((_) async => Right(tHistory));
       //act
       final result = await usecase(Params(id: tid));
       //assert
       expect(result, Right(tHistory));
-      verify(mockHistoryRepository.getHistory(tid));
+      verify(mockHistoryRepository.getHistory());
       verifyNoMoreInteractions(mockHistoryRepository);
     },
   );

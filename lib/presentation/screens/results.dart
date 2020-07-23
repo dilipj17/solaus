@@ -47,6 +47,7 @@ class _ResultPageState extends State<ResultPage> {
               message: state.message,
             );
           }
+          return null;
         },
       ),
     );

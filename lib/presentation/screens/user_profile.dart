@@ -47,6 +47,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
               message: state.message,
             );
           }
+          return null;
         },
       ),
     );

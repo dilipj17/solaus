@@ -33,8 +33,7 @@ class _HistoryPageState extends State<HistoryPage> {
       child: BlocBuilder<SolausBloc, SolausState>(
         builder: (context, state) {
           if (state is Empty) {
-            BlocProvider.of<SolausBloc>(context)
-                .add(GetHistoryForApp(idstring: 'sdfsdf'));
+            BlocProvider.of<SolausBloc>(context).add(LogInWithGooglePressed());
             return MessageDisplay(
               message: 'Start searching!',
             );
@@ -47,6 +46,7 @@ class _HistoryPageState extends State<HistoryPage> {
               message: state.message,
             );
           }
+          return null;
         },
       ),
     );

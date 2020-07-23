@@ -13,7 +13,7 @@ class GetHistory implements UseCase<History, Params> {
 
   @override
   Future<Either<Failure, History>> call(Params params) async {
-    return await repository.getHistory(params.id);
+    return await repository.getHistory();
   }
 }
 

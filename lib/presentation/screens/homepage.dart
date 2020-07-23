@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
               message: state.message,
             );
           }
+          return null;
         },
       ),
     );

@@ -9,6 +9,8 @@ abstract class SolausEvent extends Equatable {
 
 class GetBooksForApp extends SolausEvent {}
 
+class LogInWithGooglePressed extends SolausEvent {}
+
 class GetHistoryForApp extends SolausEvent {
   final String idstring;
 

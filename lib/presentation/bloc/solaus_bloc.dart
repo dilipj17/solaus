@@ -3,11 +3,13 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 import 'package:solaus/core/failures.dart';
+import 'package:solaus/core/success.dart';
 import 'package:solaus/core/usecase.dart';
 import 'package:solaus/domain/entities/books.dart';
 import 'package:solaus/domain/entities/history.dart';
 import 'package:solaus/domain/entities/result.dart';
 import 'package:solaus/domain/entities/user_profile.dart';
+import 'package:solaus/domain/usecases/auth.dart';
 import 'package:solaus/domain/usecases/get_books.dart';
 import 'package:solaus/domain/usecases/get_history.dart';
 import 'package:solaus/domain/usecases/get_result.dart';
@@ -18,6 +20,7 @@ import 'package:solaus/presentation/bloc/solaus_event.dart';
 import './bloc.dart';
 
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
+const String AUTH_FAILURE_MESSAGE = 'Authentication Failure';
 const String INVALID_INPUT_FAILURE_MESSAGE =
     'Invalid Input - The number must be a positive integer or zero.';
 
@@ -26,12 +29,14 @@ class SolausBloc extends Bloc<SolausEvent, SolausState> {
   final GetHistory getHistory;
   final GetUserProfile getUserProfile;
   final GetResults getResults;
+  final SignInWithGoogle signInWithGoogle;
 
   SolausBloc({
     @required GetBooks books,
     @required GetHistory history,
     @required GetUserProfile userprofile,
     @required GetResults result,
+    @required SignInWithGoogle signInWithGoogle,
   })  : assert(books != null),
         assert(history != null),
         assert(userprofile != null),
@@ -39,7 +44,8 @@ class SolausBloc extends Bloc<SolausEvent, SolausState> {
         getBooks = books,
         getHistory = history,
         getUserProfile = userprofile,
-        getResults = result;
+        getResults = result,
+        signInWithGoogle = signInWithGoogle;
 
   @override
   SolausState get initialState => Empty();
@@ -65,7 +71,20 @@ class SolausBloc extends Bloc<SolausEvent, SolausState> {
       yield Loading();
       final failureOrResults = await getResults(Params(id: event.idstring));
       yield* _eitherLoadedOrErrorStateResults(failureOrResults);
+    } else if (event is LogInWithGooglePressed) {
+      yield Loading();
+      final failureOrLogin = await signInWithGoogle(NoParams());
+      yield* _eitherLoadedOrErrorStateLogin(failureOrLogin);
     }
+  }
+
+  Stream<SolausState> _eitherLoadedOrErrorStateLogin(
+    Either<AuthFailure, Success> failureOrLogin,
+  ) async* {
+    yield failureOrLogin.fold(
+      (failure) => Error(message: _mapFailureToMessage(failure)),
+      (success) => AuthSuccessful(),
+    );
   }
 
   Stream<SolausState> _eitherLoadedOrErrorStateBooks(
@@ -108,6 +127,8 @@ class SolausBloc extends Bloc<SolausEvent, SolausState> {
     switch (failure.runtimeType) {
       case ServerFailure:
         return SERVER_FAILURE_MESSAGE;
+      case AuthFailure:
+        return AUTH_FAILURE_MESSAGE;
       default:
         return 'Unexpected error';
     }

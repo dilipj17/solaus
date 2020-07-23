@@ -15,6 +15,10 @@ class Empty extends SolausState {}
 
 class Loading extends SolausState {}
 
+class AuthSuccessful extends SolausState {}
+
+class AuthDenied extends SolausState {}
+
 class BooksLoaded extends SolausState {
   final Books books;
 

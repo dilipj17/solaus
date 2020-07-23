@@ -3,26 +3,26 @@ import 'package:flutter/widgets.dart';
 import 'package:solaus/core/exeptions.dart';
 import 'package:solaus/core/failures.dart';
 import 'package:solaus/core/network_info.dart';
+import 'package:solaus/core/success.dart';
 import 'package:solaus/data/remote_data_source.dart';
-import 'package:solaus/domain/entities/history.dart';
-import 'package:solaus/domain/repositories/history_repositiry.dart';
+import 'package:solaus/domain/repositories/auth_repository.dart';
 
-class HistoryRepositoryImpl implements HistoryRepository {
+class SignInWithGoogleRepositoryImpl implements SignInWithGoogleRepository {
   final SolausRemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
 
-  HistoryRepositoryImpl({
+  SignInWithGoogleRepositoryImpl({
     @required this.remoteDataSource,
     @required this.networkInfo,
   });
 
   @override
-  Future<Either<Failure, History>> getHistory() async {
+  Future<Either<AuthFailure, Success>> signInWithGoogle() async {
     try {
-      final remotehistory = await remoteDataSource.getHistory();
-      return Right(remotehistory);
+      print("SignInWithGoogleRepositoryImpl");
+      return Right(Success());
     } on ServerException {
-      return Left(ServerFailure());
+      return Left(AuthFailure());
     }
   }
 }

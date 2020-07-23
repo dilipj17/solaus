@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 
 abstract class SolausRemoteDataSource {
   Future<BookModel> getBooks();
-  Future<HistoryModel> getHistory(String id);
+  Future<HistoryModel> getHistory();
   Future<ResultModel> getResult(String id);
   Future<UserProfileModel> getUserProfile(String id);
 }
@@ -40,7 +40,7 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
   }
 
   @override
-  Future<HistoryModel> getHistory(String id) =>
+  Future<HistoryModel> getHistory() =>
       _getHistoryFromUrl("http://demo3459690.mockable.io/history");
 
   Future<HistoryModel> _getHistoryFromUrl(String url) async {

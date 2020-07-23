@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ant_icons/ant_icons.dart';
-import 'package:solaus/presentation/screens/history.dart';
 import 'package:solaus/presentation/screens/homepage.dart';
-import 'package:solaus/presentation/screens/results.dart';
-import 'package:solaus/presentation/screens/user_profile.dart';
 
 class AuthModuleClass extends StatefulWidget {
   @override
@@ -38,32 +35,35 @@ class _AuthModuleClassState extends State<AuthModuleClass> {
                   color: Theme.of(context).accentColor,
                   borderRadius: BorderRadius.all(Radius.circular(25.0))),
               child: Material(
-                  color: Theme.of(context).accentColor,
-                  child: InkWell(
-                      onTap: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => HomePage())),
-                      child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              AntIcons.google_circle,
-                              size: 30.0,
-                              color: Color(0xFFFFFFFF),
-                            ),
-                            SizedBox(width: 3.0),
-                            Text(
-                              'Continue with Google',
-                              style: TextStyle(
-                                  fontSize: 22.0, color: Color(0xFFFFFFFF)),
-                            ),
-                          ]))),
+                color: Theme.of(context).accentColor,
+                child: InkWell(
+                  onTap: () => Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => HomePage())),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        AntIcons.google_circle,
+                        size: 30.0,
+                        color: Color(0xFFFFFFFF),
+                      ),
+                      SizedBox(width: 3.0),
+                      Text(
+                        'Continue with Google',
+                        style:
+                            TextStyle(fontSize: 22.0, color: Color(0xFFFFFFFF)),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
-          RaisedButton(
-            onPressed: () => Navigator.push(
-                context, MaterialPageRoute(builder: (_) => HistoryPage())),
-          ),
+          // RaisedButton(
+          //   onPressed: () => Navigator.push(
+          //       context, MaterialPageRoute(builder: (_) => HistoryPage())),
+          // ),
           // RaisedButton(
           //   onPressed: () => Navigator.push(
           //       context, MaterialPageRoute(builder: (_) => UserProfilePage())),
