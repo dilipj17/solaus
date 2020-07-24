@@ -6,31 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
-class CameraFeed extends StatefulWidget {
-  final CameraDescription mainCamera;
-  CameraFeed({Key key, this.mainCamera}) : super(key: key);
-
-  @override
-  _CameraFeedState createState() => _CameraFeedState();
-}
-
-class _CameraFeedState extends State<CameraFeed> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: TakePictureScreen(
-        camera: widget.mainCamera,
-      ),
-    );
-  }
-}
-
+// A screen that allows users to take a picture using a given camera.
 class TakePictureScreen extends StatefulWidget {
-  final CameraDescription camera;
-
   const TakePictureScreen({
     Key key,
-    @required this.camera,
   }) : super(key: key);
 
   @override
@@ -38,22 +17,19 @@ class TakePictureScreen extends StatefulWidget {
 }
 
 class TakePictureScreenState extends State<TakePictureScreen> {
-  CameraController _controller;
   Future<void> _initializeControllerFuture;
+  CameraController _controller;
 
   @override
   void initState() {
     super.initState();
-    // To display the current output from the Camera,
-    // create a CameraController.
-    _controller = CameraController(
-      // Get a specific camera from the list of available cameras.
-      widget.camera,
-      // Define the resolution to use.
-      ResolutionPreset.medium,
-    );
+    _initializeCamera();
+  }
 
-    // Next, initialize the controller. This returns a Future.
+  Future<void> _initializeCamera() async {
+    final cameras = await availableCameras();
+    final firstCamera = cameras.first;
+    _controller = CameraController(firstCamera, ResolutionPreset.high);
     _initializeControllerFuture = _controller.initialize();
   }
 
@@ -67,7 +43,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Take a picture')),
       // Wait until the controller is initialized before displaying the
       // camera preview. Use a FutureBuilder to display a loading spinner
       // until the controller has finished initializing.

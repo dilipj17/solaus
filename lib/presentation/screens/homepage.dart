@@ -17,14 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('sd'),
-      ),
-      body: SingleChildScrollView(
-        child: buildBody(context),
-      ),
-    );
+    return buildBody(context);
   }
 
   BlocProvider<SolausBloc> buildBody(BuildContext context) {

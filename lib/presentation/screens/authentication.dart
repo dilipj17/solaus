@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:solaus/presentation/bloc/bloc.dart';
+import 'package:solaus/presentation/screens/camera.dart';
+import 'package:solaus/presentation/screens/homepage.dart';
 import 'package:solaus/presentation/widgets/loading_widget.dart';
 
 import '../../injection_container.dart';
@@ -15,11 +17,7 @@ class Authentication extends StatefulWidget {
 class _AuthenticationState extends State<Authentication> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: buildBody(context),
-      ),
-    );
+    return buildBody(context);
   }
 
   BlocProvider<SolausBloc> buildBody(BuildContext context) {
@@ -32,6 +30,8 @@ class _AuthenticationState extends State<Authentication> {
             return LoadingWidget();
           } else if (state is Loading) {
             return LoadingWidget();
+          } else if (state is AuthSuccessful) {
+            return TakePictureScreen();
           }
           return LoadingWidget();
         },

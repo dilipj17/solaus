@@ -1,8 +1,11 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:ant_icons/ant_icons.dart';
 import 'package:solaus/presentation/screens/authentication.dart';
 
 class AuthModuleClass extends StatefulWidget {
+  final CameraDescription mainCamera;
+  AuthModuleClass({Key key, this.mainCamera}) : super(key: key);
   @override
   _AuthModuleClassState createState() => _AuthModuleClassState();
 }
@@ -60,18 +63,6 @@ class _AuthModuleClassState extends State<AuthModuleClass> {
               ),
             ),
           ),
-          // RaisedButton(
-          //   onPressed: () => Navigator.push(
-          //       context, MaterialPageRoute(builder: (_) => HistoryPage())),
-          // ),
-          // RaisedButton(
-          //   onPressed: () => Navigator.push(
-          //       context, MaterialPageRoute(builder: (_) => UserProfilePage())),
-          // ),
-          // RaisedButton(
-          //   onPressed: () => Navigator.push(
-          //       context, MaterialPageRoute(builder: (_) => ResultPage())),
-          // ),
         ],
       ),
     );
