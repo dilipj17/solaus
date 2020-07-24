@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ant_icons/ant_icons.dart';
-import 'package:solaus/presentation/screens/homepage.dart';
+import 'package:solaus/presentation/screens/authentication.dart';
 
 class AuthModuleClass extends StatefulWidget {
   @override
@@ -37,8 +37,8 @@ class _AuthModuleClassState extends State<AuthModuleClass> {
               child: Material(
                 color: Theme.of(context).accentColor,
                 child: InkWell(
-                  onTap: () => Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage())),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => Authentication())),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,6 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:solaus/data/repositories/books_repository_impl.dart';
@@ -66,6 +67,7 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<SignInWithGoogleRepository>(
     () => SignInWithGoogleRepositoryImpl(
+      googleSignIn: sl(),
       networkInfo: sl(),
       remoteDataSource: sl(),
     ),
@@ -83,4 +85,5 @@ Future<void> init() async {
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => DataConnectionChecker());
+  sl.registerLazySingleton(() => GoogleSignIn());
 }

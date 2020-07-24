@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "108507789442",
+    "firebase_url": "https://solaus-9eae4.firebaseio.com",
+    "project_id": "solaus-9eae4",
+    "storage_bucket": "solaus-9eae4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108507789442:android:97dedd6a19c1a415cfdc9b",
+        "android_client_info": {
+          "package_name": "com.example.solaus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108507789442-g9ldmv1ko12m83f9lqq2mseh9dl6bjeo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.solaus",
+            "certificate_hash": "19b2f4844ecf3398df38f290f579e90c0cd12432"
+          }
+        },
+        {
+          "client_id": "108507789442-7nq5jsaldheu89mg32m82moitpo51gie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0b_Xgo9Cr5DTcwkj8ORxWmiX1r1omBFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108507789442-7nq5jsaldheu89mg32m82moitpo51gie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
