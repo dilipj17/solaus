@@ -151,6 +151,8 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
+        selectedItemColor: Colors.orange,
+        unselectedItemColor: Colors.yellow,
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.camera),
