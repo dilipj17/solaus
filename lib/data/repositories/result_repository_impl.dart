@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:solaus/core/exeptions.dart';
@@ -19,7 +22,9 @@ class ResultRepositoryImpl implements ResultRepository {
   @override
   Future<Either<Failure, Result>> getResult(String id) async {
     try {
-      final remoteresult = await remoteDataSource.getResult(id);
+      List<int> imageBytes = await File(id).readAsBytes();
+      String base64Image = base64Encode(imageBytes);
+      final remoteresult = await remoteDataSource.getResult(base64Image);
       return Right(remoteresult);
     } on ServerException {
       return Left(ServerFailure());

@@ -14,6 +14,7 @@ abstract class SolausRemoteDataSource {
   Future<HistoryModel> getHistory();
   Future<ResultModel> getResult(String id);
   Future<UserProfileModel> getUserProfile(String id);
+  Future<Map<String, String>> getToken(Map<String, String> id);
 }
 
 class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
@@ -60,14 +61,17 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
 
   @override
   Future<ResultModel> getResult(String id) =>
-      _getResultFromUrl("http://demo3459690.mockable.io/result");
+      _getResultFromUrl("http://demo3459690.mockable.io/result", id);
 
-  Future<ResultModel> _getResultFromUrl(String url) async {
-    final response = await client.get(
+  Future<ResultModel> _getResultFromUrl(String url, String id) async {
+    Map data = {'image': id};
+    String body = json.encode(data);
+    final response = await client.post(
       url,
       headers: {
         'Content-Type': 'application/json',
       },
+      body: body,
     );
 
     if (response.statusCode == 200) {
@@ -91,6 +95,22 @@ class SolausRemoteDataSourceImpl implements SolausRemoteDataSource {
 
     if (response.statusCode == 200) {
       return UserProfileModel.fromJson(json.decode(response.body));
+    } else {
+      throw ServerException();
+    }
+  }
+
+  Future<Map<String, String>> getToken(Map<String, String> id) async {
+    final responce = await client.post(
+      "asf",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: id,
+    );
+
+    if (responce.statusCode == 200) {
+      return json.decode(responce.body);
     } else {
       throw ServerException();
     }

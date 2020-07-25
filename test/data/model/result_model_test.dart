@@ -10,7 +10,7 @@ void main() {
   final tResultModel = ResultModel(
     equation: "equation",
     id: "id",
-    user: "user",
+    latex: "user",
     steps: "steps",
   );
 

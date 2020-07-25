@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ffcache/ffcache.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:solaus/core/exeptions.dart';
@@ -18,6 +19,12 @@ class SignInWithGoogleRepositoryImpl implements SignInWithGoogleRepository {
     @required this.networkInfo,
     @required this.googleSignIn,
   });
+
+  void setCache(String key, String value, int time) async {
+    final cache = FFCache(name: 'Solaus');
+    await cache.init();
+    cache.setStringWithTimeout(key, value, Duration(days: time));
+  }
 
   @override
   Future<Either<AuthFailure, Success>> signInWithGoogle() async {

@@ -8,7 +8,8 @@ import 'package:solaus/presentation/widgets/message_display.dart';
 import 'package:solaus/injection_container.dart';
 
 class ResultPage extends StatefulWidget {
-  ResultPage({Key key}) : super(key: key);
+  final String idString;
+  ResultPage({Key key, this.idString}) : super(key: key);
 
   @override
   _ResultPageState createState() => _ResultPageState();
@@ -34,7 +35,7 @@ class _ResultPageState extends State<ResultPage> {
         builder: (context, state) {
           if (state is Empty) {
             BlocProvider.of<SolausBloc>(context)
-                .add(GetResultsForApp(idstring: 'sdfsdf'));
+                .add(GetResultsForApp(idstring: widget.idString));
             return MessageDisplay(
               message: 'Start searching!',
             );
